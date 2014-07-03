@@ -5,6 +5,9 @@
  */
 package ea7;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
  *
  * @author goesta
@@ -12,16 +15,13 @@ package ea7;
 public class Main {
 
     public static void main(String[] args) {
-        java.util.Map<String, Integer> m = new java.util.HashMap<String, Integer>();
-        String s = "Hallo";
-        int x = 10;
-        m.put(s, x);
-        m.put(s + s, x + x);
-        m.put(s, m.get(s + s));
-        int y = m.get(s);
-        x = m.size();
-        System.out.println("y = " + y);
-        System.out.println("x = " + x);
+
+        DateiSortierer ds = new DateiSortierer();
+        String name = "/home/goesta/test2.txt";
+        StringListe l;
+
+        ds.sortiereDatei(name);
+//        System.out.println("l2 = " + l2);
 
     }
 }

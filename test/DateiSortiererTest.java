@@ -7,7 +7,9 @@
 import ea7.DateiNichtGefundenAusnahme;
 import ea7.DateiSortierer;
 import ea7.StringListe;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class DateiSortiererTest extends TestCase {
 
     public void testeEinlesen() {
         DateiSortierer ds = new DateiSortierer();
-        String name = "test.txt";
+        String name = "/home/goesta/test.txt";
         List<String> l;
         try {
             l = ds.einlesen(name);
@@ -84,81 +86,81 @@ public class DateiSortiererTest extends TestCase {
         }
     }
 
-//    public void testeGebeAus() {
-//        DateiSortierer ds = new DateiSortierer();
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        String[] test = {"asfas", "aws", "jzrfjc", "dfhfds", "asfewfg", "wertgwertw"};
-//        StringListe l = new StringListe();
-//        l.addAll(Arrays.asList(test));
-//        ds.gebeAus(baos, l);
-//        String result = "";
-//        for (int i = 0; i < test.length; i++) {
-//            result += test[i] + System.getProperty("line.separator");
-//        }
-//        assertEquals(result, baos.toString());
-//    }
-//
-//	public void testeSortiereDatei() {
-//		PrintStream old = System.out;
-//		try {
-//			DateiSortierer ds = new DateiSortierer();
-//			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//			System.setOut(new PrintStream(baos));
-//			ds.sortiereDatei("test2.txt");
-//			String[] test = {"hahaha", "licht", "haus", "hallo", "blume", "nacht", "huhu", "wald", "himmel", "sonne", "erde", "luft", "wasser"};
-//			Arrays.sort(test);
-//			String result = "";
-//			for (int i = 0; i < test.length; i++) {
-//				result += test[i] + System.getProperty("line.separator");
-//			}
-//			assertEquals("Die Ausgabe stimmt nicht.", result , baos.toString());		
-//		} finally {
-//			System.setOut(old);
-//		}
-//	}
-//
-//	public void testeSortiereDateiDateiNichtGefundenAusnahme() {
-//		PrintStream old = System.err;
-//		try {
-//			DateiSortierer ds = new DateiSortierer();
-//			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//			System.setErr(new PrintStream(baos));
-//			ds.sortiereDatei("foo.txt");
-//			assertEquals("Die Fehlermeldung bei nicht vorhandener Datei ist fehlerhaft.", "Die Datei foo.txt konnte nicht gefunden werden." , baos.toString().trim());	
-//		} finally {
-//			System.setErr(old);
-//		}
-//	}
-//
-//	public void testeSortiereDateiIOAusnahme() {
-//		PrintStream old = System.err;
-//		try {
-//			DateiSortierer ds = new MyDateiSortierer();
-//			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//			System.setErr(new PrintStream(baos));
-//			ds.sortiereDatei("test.txt");
-//			assertEquals("Die Fehlermeldung bei einer IOException ist nicht die der Ausnahme.", "TEST" , baos.toString().trim());	
-//			ds = new MyDateiSortierer2();
-//			baos = new ByteArrayOutputStream();
-//			System.setErr(new PrintStream(baos));
-//			ds.sortiereDatei("test.txt");
-//			assertEquals("Die Fehlermeldung bei einer IOException ist nicht die der Ausnahme.", "TESTTESTTEST" , baos.toString().trim());	
-//		} finally {
-//			System.setErr(old);
-//		}
-//	}
-//}
-//
-//class MyDateiSortierer extends DateiSortierer {
-//
-//	public StringListe einlesen(String dateiname) throws DateiNichtGefundenAusnahme, IOException {
-//		throw new IOException("TEST");
-//	}
-//}
-//
-//class MyDateiSortierer2 extends DateiSortierer {
-//
-//	public StringListe einlesen(String dateiname) throws DateiNichtGefundenAusnahme, IOException {
-//		throw new IOException("TESTTESTTEST");
-//	}
+    public void testeGebeAus() {
+        DateiSortierer ds = new DateiSortierer();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        String[] test = {"asfas", "aws", "jzrfjc", "dfhfds", "asfewfg", "wertgwertw"};
+        StringListe l = new StringListe();
+        l.addAll(Arrays.asList(test));
+        ds.gebeAus(baos, l);
+        String result = "";
+        for (int i = 0; i < test.length; i++) {
+            result += test[i] + System.getProperty("line.separator");
+        }
+        assertEquals(result, baos.toString());
+    }
+
+    public void testeSortiereDatei() {
+        PrintStream old = System.out;
+        try {
+            DateiSortierer ds = new DateiSortierer();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(baos));
+            ds.sortiereDatei("/home/goesta/test2.txt");
+            String[] test = {"hahaha", "licht", "haus", "hallo", "blume", "nacht", "huhu", "wald", "himmel", "sonne", "erde", "luft", "wasser"};
+            Arrays.sort(test);
+            String result = "";
+            for (int i = 0; i < test.length; i++) {
+                result += test[i] + System.getProperty("line.separator");
+            }
+            assertEquals("Die Ausgabe stimmt nicht.", result, baos.toString());
+        } finally {
+            System.setOut(old);
+        }
+    }
+
+    public void testeSortiereDateiDateiNichtGefundenAusnahme() {
+        PrintStream old = System.err;
+        try {
+            DateiSortierer ds = new DateiSortierer();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            System.setErr(new PrintStream(baos));
+            ds.sortiereDatei("foo.txt");
+            assertEquals("Die Fehlermeldung bei nicht vorhandener Datei ist fehlerhaft.", "Die Datei foo.txt konnte nicht gefunden werden.", baos.toString().trim());
+        } finally {
+            System.setErr(old);
+        }
+    }
+
+    public void testeSortiereDateiIOAusnahme() {
+        PrintStream old = System.err;
+        try {
+            DateiSortierer ds = new MyDateiSortierer();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            System.setErr(new PrintStream(baos));
+            ds.sortiereDatei("test.txt");
+            assertEquals("Die Fehlermeldung bei einer IOException ist nicht die der Ausnahme.", "TEST", baos.toString().trim());
+            ds = new MyDateiSortierer2();
+            baos = new ByteArrayOutputStream();
+            System.setErr(new PrintStream(baos));
+            ds.sortiereDatei("test.txt");
+            assertEquals("Die Fehlermeldung bei einer IOException ist nicht die der Ausnahme.", "TESTTESTTEST", baos.toString().trim());
+        } finally {
+            System.setErr(old);
+        }
+    }
+}
+
+class MyDateiSortierer extends DateiSortierer {
+
+    public StringListe einlesen(String dateiname) throws DateiNichtGefundenAusnahme, IOException {
+        throw new IOException("TEST");
+    }
+}
+
+class MyDateiSortierer2 extends DateiSortierer {
+
+    public StringListe einlesen(String dateiname) throws DateiNichtGefundenAusnahme, IOException {
+        throw new IOException("TESTTESTTEST");
+    }
 }
