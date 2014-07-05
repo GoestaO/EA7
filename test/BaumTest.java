@@ -1,5 +1,6 @@
 
 import a74.AddKnoten;
+import a74.Baum;
 import a74.BinaerOperatorKnoten;
 import a74.DivKnoten;
 import a74.IntKnoten;
@@ -310,94 +311,94 @@ public class BaumTest extends TestCase {
 		}
 	}
 	
-//	public void testeBaumKonstruktor() {
-//		IntKnoten i = new IntKnoten(100);
-//		Baum b = new Baum(i);
-//		assertEquals("Wurzel ist nach Konstruktoraufruf inkorrekt.", i, b.liefereWurzel());
-//	}
-//	
-//	public void testeBaumWerteAus() {
-//		for (int i = 0; i < 100; i++) {
-//			IntKnoten j = new IntKnoten(i);
-//			Baum b = new Baum(j);
-//			assertEquals("werteAus() bei Baum mit nur einem IntKnoten fehlerhaft", i, b.werteAus());
-//		}
-//		IntKnoten t1 = new IntKnoten(15);
-//		IntKnoten t2 = new IntKnoten(5);
-//		AddKnoten add = new AddKnoten(t1, t2);
-//		Baum b = new Baum(add);		
-//		assertEquals("werteAus() bei Baum fehlerhaft", 20, b.werteAus());
-//		SubKnoten sub = new SubKnoten(t1, t2);
-//		b = new Baum(sub);		
-//		assertEquals("werteAus() bei Baum fehlerhaft", 10, b.werteAus());
-//		MultKnoten mult = new MultKnoten(t1, t2);
-//		b = new Baum(mult);		
-//		assertEquals("werteAus() bei Baum fehlerhaft", 75, b.werteAus());
-//		DivKnoten div = new DivKnoten(t1, t2);
-//		b = new Baum(div);		
-//		assertEquals("werteAus() bei Baum fehlerhaft", 3, b.werteAus());
-//		Knoten k = new SubKnoten(new DivKnoten(new AddKnoten(add, sub), div), mult);
-//		b = new Baum(k);
-//		assertEquals("Ergebnis des Baumes mit folgendem Ausdrucks fehlerhaft: ((((15 + 5) + (15 - 5)) / (15 / 5)) - (15 * 5))", -65, b.werteAus());
-//	}
-//	
-//	public void testeBaumWerteAusAusnahmen() {
-//		IntKnoten t1 = new IntKnoten(15);
-//		IntKnoten t2 = new IntKnoten(0);
-//		DivKnoten div = new DivKnoten(t1, t2);
-//		Baum b = new Baum(div);
-//		try {
-//			b.werteAus();
-//			fail("Hier hätte eine Ausnahme auftreten sollen, da durch 0 dividiert wird.");
-//		} catch (ArithmeticException e) {
-//			assertEquals("Die Ausnahme enhaelt nicht dei gewuenschte Fehlermeldung", "Division durch 0!", e.getMessage());
-//		}
-//		
-//	}
-//
-//	public void testeBaumToString() {
-//		for (int i = 0; i < 100; i++) {
-//			IntKnoten j = new IntKnoten(i);
-//			Baum b = new Baum(j);
-//			assertEquals("toString() bei Baum mit nur einem IntKnoten fehlerhaft", "" + i, b.toString());
-//		}
-//		IntKnoten t1 = new IntKnoten(15);
-//		IntKnoten t2 = new IntKnoten(5);
-//		AddKnoten add = new AddKnoten(t1, t2);
-//		Baum b = new Baum(add);	
-//		assertEquals("toString() bei AddKnoten fehlerhaft", "(15 + 5)", b.toString());
-//		SubKnoten sub = new SubKnoten(t1, t2);
-//		b = new Baum(sub);
-//		assertEquals("toString() bei SubKnoten fehlerhaft", "(15 - 5)", b.toString());
-//		MultKnoten mult = new MultKnoten(t1, t2);
-//		b = new Baum(mult);
-//		assertEquals("toString() bei MultKnoten fehlerhaft", "(15 * 5)", b.toString());
-//		DivKnoten div = new DivKnoten(t1, t2);
-//		b = new Baum(div);
-//		assertEquals("toString() bei DivKnoten fehlerhaft", "(15 / 5)", b.toString());
-//		Knoten k = new SubKnoten(new DivKnoten(new AddKnoten(add, sub), div), mult);
-//		b = new Baum(k);
-//		assertEquals("toString() liefert bei Baum mit folgendem Ausdruck nicht das gewünschte Ergebnis: ((((15 + 5) + (15 - 5)) / (15 / 5)) - (15 * 5))", "((((15 + 5) + (15 - 5)) / (15 / 5)) - (15 * 5))", b.toString());
-//	}
-//	
-//	public void testeBeispielBaum() {
-//		Baum b = Baum.erzeugeBeispielBaum(2, 4, 20, 5, 10);
-//		assertEquals("Ergebnis bei Beispielbaum fehlerhaft.", 4, b.werteAus());
-//		assertEquals("toString bei Beispielbaum fehlerhaft.", "((2 * 4) + (20 / (5 - 10)))", b.toString());
-//		assertTrue("Die Wurzel des Beispielbaums ist kein AddKnoten", b.liefereWurzel() instanceof AddKnoten);
-//		assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand() instanceof MultKnoten);
-//		assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand() instanceof DivKnoten);
-//		assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand()).liefereErstenOperand() instanceof IntKnoten);
-//		assertEquals(2, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand()).liefereErstenOperand().werteAus());
-//		assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand()).liefereZweitenOperand() instanceof IntKnoten);
-//		assertEquals(4, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand()).liefereZweitenOperand().werteAus());
-//		assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereErstenOperand() instanceof IntKnoten);
-//		assertEquals(20, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereErstenOperand().werteAus());
-//		assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand() instanceof SubKnoten);
-//		assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand()).liefereErstenOperand() instanceof IntKnoten);
-//		assertEquals(5, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand()).liefereErstenOperand().werteAus());
-//		assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand()).liefereZweitenOperand() instanceof IntKnoten);
-//		assertEquals(10, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand()).liefereZweitenOperand().werteAus());
-//	}
+    public void testeBaumKonstruktor() {
+        IntKnoten i = new IntKnoten(100);
+        Baum b = new Baum(i);
+        assertEquals("Wurzel ist nach Konstruktoraufruf inkorrekt.", i, b.liefereWurzel());
+    }
+
+    public void testeBaumWerteAus() {
+        for (int i = 0; i < 100; i++) {
+            IntKnoten j = new IntKnoten(i);
+            Baum b = new Baum(j);
+            assertEquals("werteAus() bei Baum mit nur einem IntKnoten fehlerhaft", i, b.werteAus());
+        }
+        IntKnoten t1 = new IntKnoten(15);
+        IntKnoten t2 = new IntKnoten(5);
+        AddKnoten add = new AddKnoten(t1, t2);
+        Baum b = new Baum(add);
+        assertEquals("werteAus() bei Baum fehlerhaft", 20, b.werteAus());
+        SubKnoten sub = new SubKnoten(t1, t2);
+        b = new Baum(sub);
+        assertEquals("werteAus() bei Baum fehlerhaft", 10, b.werteAus());
+        MultKnoten mult = new MultKnoten(t1, t2);
+        b = new Baum(mult);
+        assertEquals("werteAus() bei Baum fehlerhaft", 75, b.werteAus());
+        DivKnoten div = new DivKnoten(t1, t2);
+        b = new Baum(div);
+        assertEquals("werteAus() bei Baum fehlerhaft", 3, b.werteAus());
+        Knoten k = new SubKnoten(new DivKnoten(new AddKnoten(add, sub), div), mult);
+        b = new Baum(k);
+        assertEquals("Ergebnis des Baumes mit folgendem Ausdrucks fehlerhaft: ((((15 + 5) + (15 - 5)) / (15 / 5)) - (15 * 5))", -65, b.werteAus());
+    }
+
+    public void testeBaumWerteAusAusnahmen() {
+        IntKnoten t1 = new IntKnoten(15);
+        IntKnoten t2 = new IntKnoten(0);
+        DivKnoten div = new DivKnoten(t1, t2);
+        Baum b = new Baum(div);
+        try {
+            b.werteAus();
+            fail("Hier hätte eine Ausnahme auftreten sollen, da durch 0 dividiert wird.");
+        } catch (ArithmeticException e) {
+            assertEquals("Die Ausnahme enhaelt nicht dei gewuenschte Fehlermeldung", "Division durch 0!", e.getMessage());
+        }
+
+    }
+
+    public void testeBaumToString() {
+        for (int i = 0; i < 100; i++) {
+            IntKnoten j = new IntKnoten(i);
+            Baum b = new Baum(j);
+            assertEquals("toString() bei Baum mit nur einem IntKnoten fehlerhaft", "" + i, b.toString());
+        }
+        IntKnoten t1 = new IntKnoten(15);
+        IntKnoten t2 = new IntKnoten(5);
+        AddKnoten add = new AddKnoten(t1, t2);
+        Baum b = new Baum(add);
+        assertEquals("toString() bei AddKnoten fehlerhaft", "(15 + 5)", b.toString());
+        SubKnoten sub = new SubKnoten(t1, t2);
+        b = new Baum(sub);
+        assertEquals("toString() bei SubKnoten fehlerhaft", "(15 - 5)", b.toString());
+        MultKnoten mult = new MultKnoten(t1, t2);
+        b = new Baum(mult);
+        assertEquals("toString() bei MultKnoten fehlerhaft", "(15 * 5)", b.toString());
+        DivKnoten div = new DivKnoten(t1, t2);
+        b = new Baum(div);
+        assertEquals("toString() bei DivKnoten fehlerhaft", "(15 / 5)", b.toString());
+        Knoten k = new SubKnoten(new DivKnoten(new AddKnoten(add, sub), div), mult);
+        b = new Baum(k);
+        assertEquals("toString() liefert bei Baum mit folgendem Ausdruck nicht das gewünschte Ergebnis: ((((15 + 5) + (15 - 5)) / (15 / 5)) - (15 * 5))", "((((15 + 5) + (15 - 5)) / (15 / 5)) - (15 * 5))", b.toString());
+    }
+
+    public void testeBeispielBaum() {
+        Baum b = Baum.erzeugeBeispielBaum(2, 4, 20, 5, 10);
+        assertEquals("Ergebnis bei Beispielbaum fehlerhaft.", 4, b.werteAus());
+        assertEquals("toString bei Beispielbaum fehlerhaft.", "((2 * 4) + (20 / (5 - 10)))", b.toString());
+        assertTrue("Die Wurzel des Beispielbaums ist kein AddKnoten", b.liefereWurzel() instanceof AddKnoten);
+        assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand() instanceof MultKnoten);
+        assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand() instanceof DivKnoten);
+        assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand()).liefereErstenOperand() instanceof IntKnoten);
+        assertEquals(2, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand()).liefereErstenOperand().werteAus());
+        assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand()).liefereZweitenOperand() instanceof IntKnoten);
+        assertEquals(4, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereErstenOperand()).liefereZweitenOperand().werteAus());
+        assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereErstenOperand() instanceof IntKnoten);
+        assertEquals(20, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereErstenOperand().werteAus());
+        assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand() instanceof SubKnoten);
+        assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand()).liefereErstenOperand() instanceof IntKnoten);
+        assertEquals(5, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand()).liefereErstenOperand().werteAus());
+        assertTrue("Die Struktur des Beispielbaums ist fehlerhaft", ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand()).liefereZweitenOperand() instanceof IntKnoten);
+        assertEquals(10, ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) ((BinaerOperatorKnoten) b.liefereWurzel()).liefereZweitenOperand()).liefereZweitenOperand()).liefereZweitenOperand().werteAus());
+    }
 
 }
