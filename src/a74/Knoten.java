@@ -13,6 +13,5 @@ public interface Knoten {
 
     public int werteAus();
 
-    @Override
     public String toString();
 }

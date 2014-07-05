@@ -1,3 +1,4 @@
+
 import a74.AddKnoten;
 import a74.BinaerOperatorKnoten;
 import a74.DivKnoten;
@@ -17,7 +18,7 @@ public class BaumTest extends TestCase {
 	public void testeKnotenInterface() {
 		Class<?> knoten;
 		try {
-			knoten = Class.forName("Knoten");
+			knoten = Class.forName("a74.Knoten");
 		} catch (ClassNotFoundException e) {
 			fail("Das Interface Knoten konnte nicht gefunden werden.");
 			return;
@@ -46,14 +47,14 @@ public class BaumTest extends TestCase {
 	public void testeIntKnoten() {
 		Class<?> intKnoten;
 		try {
-			intKnoten = Class.forName("IntKnoten");
+			intKnoten = Class.forName("a74.IntKnoten");
 		} catch (ClassNotFoundException e) {
 			fail("Die Klasse IntKnoten konnte nicht gefunden werden.");
 			return;
 		}
 		Class<?>[] interfaces = intKnoten.getInterfaces();
 		assertEquals("Die Klasse implementiert nicht genau ein Interface", 1, interfaces.length);
-		assertEquals("Das implementierte Interface heisst nicht Knoten", "Knoten", interfaces[0].getName());
+		assertEquals("Das implementierte Interface heisst nicht Knoten", "a74.Knoten", interfaces[0].getName());
 
 		try {
 			intKnoten.getDeclaredMethod("werteAus", new Class[0]);
@@ -83,7 +84,7 @@ public class BaumTest extends TestCase {
 	public void testeBinaerOperatorKnoten() {
 		Class<?> binaerOp;
 		try {
-			binaerOp = Class.forName("BinaerOperatorKnoten");
+			binaerOp = Class.forName("a74.BinaerOperatorKnoten");
 		} catch (ClassNotFoundException e) {
 			fail("Die Klasse BinaerOperatorKnoten konnte nicht gefunden werden.");
 			return;
@@ -91,7 +92,7 @@ public class BaumTest extends TestCase {
 		assertTrue("Die Klasse ist nicht abstrakt.", Modifier.isAbstract(binaerOp.getModifiers()));
 		Class<?>[] interfaces = binaerOp.getInterfaces();
 		assertEquals("Die Klasse implementiert nicht genau ein Interface", 1, interfaces.length);
-		assertEquals("Das implementierte Interface heisst nicht Knoten", "Knoten", interfaces[0].getName());
+		assertEquals("Das implementierte Interface heisst nicht Knoten", "a74.Knoten", interfaces[0].getName());
 
 		try {
 			binaerOp.getDeclaredMethod("liefereErstenOperand", new Class[0]);
@@ -119,7 +120,7 @@ public class BaumTest extends TestCase {
 	}
 
 	public void testeOperatorKnoten() {
-		String[] namen = {"AddKnoten", "SubKnoten", "MultKnoten", "DivKnoten"};
+		String[] namen = {"a74.AddKnoten", "a74.SubKnoten", "a74.MultKnoten", "a74.DivKnoten"};
 		for (String n : namen) {
 			Class<?> opKnoten;
 			try {
@@ -141,7 +142,7 @@ public class BaumTest extends TestCase {
 	public void testeBaum() {
 		Class<?> baum;
 		try {
-			baum = Class.forName("Baum");
+			baum = Class.forName("a74.Baum");
 		} catch (ClassNotFoundException e) {
 			fail("Die Klasse Baum konnte nicht gefunden werden.");
 			return;
