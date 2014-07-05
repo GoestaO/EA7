@@ -12,7 +12,13 @@ package a74;
 public class Baum {
 
     private Knoten wurzel;
-    
-    
+
+    public Knoten liefereWurzel() {
+        return wurzel;
+    }
+
+    public Baum(Knoten wurzel) {
+        this.wurzel = wurzel;
+    }
 
 }

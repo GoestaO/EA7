@@ -26,4 +26,6 @@ public class IntKnoten implements Knoten {
     public String toString() {
         return new Integer(werteAus()).toString();
     }
+    
+   
 }
