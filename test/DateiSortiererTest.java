@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-import ea7.DateiNichtGefundenAusnahme;
-import ea7.DateiSortierer;
-import ea7.StringListe;
+import a73.DateiNichtGefundenAusnahme;
+import a73.DateiSortierer;
+import a73.StringListe;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;

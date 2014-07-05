@@ -1,4 +1,4 @@
-package ea7;
+package a73;
 
 import java.util.LinkedList;
 
