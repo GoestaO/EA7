@@ -23,4 +23,9 @@ public class DivKnoten extends BinaerOperatorKnoten {
         super(erster, zweiter);
     }
 
+    @Override
+    public String toString() {
+        return "(" + liefereErstenOperand().werteAus() + " / " + liefereZweitenOperand().werteAus() + ")";
+    }
+
 }

@@ -20,4 +20,9 @@ public class SubKnoten extends BinaerOperatorKnoten {
         super(erster, zweiter);
     }
 
+    @Override
+    public String toString() {
+        return "(" + liefereErstenOperand().werteAus() + " - " + liefereZweitenOperand().werteAus() + ")";
+    }
+
 }

@@ -19,5 +19,11 @@ public class MultKnoten extends BinaerOperatorKnoten {
     public MultKnoten(Knoten erster, Knoten zweiter) {
         super(erster, zweiter);
     }
+    
+    @Override
+    public String toString() {
+        return "(" + liefereErstenOperand().werteAus() + " * " + liefereZweitenOperand().werteAus() + ")";
+    }
+
 
 }
